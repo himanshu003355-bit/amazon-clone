@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amazon.in – Shop Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ember+Display:wght@400;700&family=Bookerly:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+<!-- ══ HEADER ══════════════════════════════════════════ -->
+<header>
+  <div class="nav-top">
+    <!-- Logo -->
+    <div class="logo" onclick="showToast('Welcome to Amazon!')">
+      <div>
+        <div class="logo-text">amazon</div>
+        <div class="logo-smile">&#9652; .in</div>
+      </div>
+    </div>
+ 
+    <!-- Deliver To -->
+    <div class="deliver-to">
+      <span>Deliver to</span>
+      <span>📍 Ghaziabad 201009</span>
+    </div>
+ 
+    <!-- Search -->
+    <div class="search-bar">
+      <select class="search-category" id="searchCat">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Mobiles</option>
+        <option>Fashion</option>
+        <option>Books</option>
+        <option>Home</option>
+        <option>Grocery</option>
+      </select>
+      <input class="search-input" id="searchInput" type="text" placeholder="Search Amazon.in" />
+      <button class="search-btn" onclick="doSearch()">🔍</button>
+    </div>
+ 
+    <!-- Actions -->
+    <div class="nav-actions">
+      <div class="nav-action">
+        <span>Hello, Sign in</span>
+        <span>Account &amp; Lists ▾</span>
+      </div>
+      <div class="nav-action">
+        <span>Returns</span>
+        <span>&amp; Orders</span>
+      </div>
+      <div class="cart-btn" onclick="toggleCart()">
+        <span class="cart-count" id="cartCount">0</span>
+        <span>🛒 Cart</span>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Sub-Nav -->
+  <nav class="nav-sub">
+    <div class="nav-sub-link bold">☰ All</div>
+    <div class="nav-sub-link">Today's Deals</div>
+    <div class="nav-sub-link">Customer Service</div>
+    <div class="nav-sub-link">Registry</div>
+    <div class="nav-sub-link">Gift Cards</div>
+    <div class="nav-sub-link">Sell</div>
+    <div class="nav-sub-link" style="color:#f90;font-weight:700">Prime</div>
+    <div class="nav-sub-link">New Releases</div>
+    <div class="nav-sub-link">Electronics</div>
+    <div class="nav-sub-link">Fashion</div>
+    <div class="nav-sub-link">Books</div>
+    <div class="nav-sub-link">Mobiles</div>
+    <div class="nav-sub-link">Home &amp; Kitchen</div>
+    <div class="nav-sub-link">Sports</div>
+  </nav>
+</header>
+ 
+<!-- ══ HERO CAROUSEL ═══════════════════════════════════ -->
+<div class="hero">
+  <div class="slides" id="slides">
+    <div class="slide" style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)">
+      <div class="slide-overlay">
+        <div class="slide-content">
+          
+          <h1>Up to 70% Off Electronics</h1>
+          <p>Laptops, Phones, Tablets & More – Limited Time Deals</p>
+          <div class="slide-btn" onclick="showToast('Exploring Electronics...')">Shop Now</div>
+          <img src="https://t3.ftcdn.net/jpg/20/50/76/72/240_F_2050767261_8W5EQdwR3Qtl11NGInvrSE315PX2QaX5.jpg" alt="Electronics" class="slide-image" />
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background:linear-gradient(135deg,#2d5016,#4a7c2e,#6da33c)">
+      <div class="slide-overlay">
+        <div class="slide-content">
+          <h1>Fresh Grocery Deals Daily</h1>
+          <p>Order before noon – Get same-day delivery!</p>
+          <div class="slide-btn" onclick="showToast('Checking Grocery...')">Order Groceries</div>
+          <img src="https://m.media-amazon.com/images/G/31/img18/Fresh/Hero_Slider/SVD/6feb/1_8.jpg" alt="Grocery" class="slide-image" />
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background:linear-gradient(135deg,#4a0e0e,#8b1a1a,#c0392b)">
+      <div class="slide-overlay">
+        <div class="slide-content">
+          <h1>Fashion for Everyone</h1>
+          <p>Top brands. Trending styles. Delivered fast.</p>
+          <div class="slide-btn" onclick="showToast('Opening Fashion...')">Explore Fashion</div>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiG0sJY8IRUfF2YyOv5aMP3uVLfPfGvQ1bAw&s" alt="Fashion" class="slide-image" />
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background:linear-gradient(135deg,#1a0a4e,#2d1b8e,#5533cc)">
+      <div class="slide-overlay">
+        <div class="slide-content">
+          <h1>Prime Benefits</h1>
+          <p>Free & fast delivery, Prime Video, music & more</p>
+          <div class="slide-btn" onclick="showToast('Joining Prime...')">Try Prime Free</div>
+          <img src="https://m.media-amazon.com/images/G/31/prime/engagement/newsletter/2018/Mar18/640X250.jpg" alt="Prime" class="slide-image" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-btn carousel-prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="carousel-btn carousel-next" onclick="moveSlide(1)">&#10095;</button>
+  <div class="carousel-dots" id="dots"></div>
+</div>
+ 
+<!-- ══ MAIN CONTENT ════════════════════════════════════ -->
+<main class="main">
+ 
+  <!-- Category Cards -->
+  <h2 class="section-title">Shop by Category</h2>
+  <div class="card-grid" id="categoryCards"></div>
+ 
+  <!-- Products -->
+  <h2 class="section-title">Top Deals Today <span>⏱ Ends in <span id="countdown"></span></span></h2>
+  <div class="products-grid" id="productsGrid"></div>
+ 
+  <!-- Banner Strip -->
+  <div class="banner-strip">
+    <div class="banner" onclick="showToast('Opening Electronics Sale...')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+        <div style="font-size:3rem">💻</div>
+        <div style="color:#fff;font-size:1.4rem;font-weight:700">Electronics Fiesta</div>
+        <div style="color:#febd69;font-size:.9rem">Up to 60% off – Limited Stock!</div>
+      </div>
+      <div class="banner-label">Shop Electronics</div>
+    </div>
+    <div class="banner" onclick="showToast('Opening Fashion Sale...')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#4a0e8f,#7b2ff7,#c084fc);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+        <div style="font-size:3rem">👗</div>
+        <div style="color:#fff;font-size:1.4rem;font-weight:700">Fashion Week</div>
+        <div style="color:#fde68a;font-size:.9rem">New arrivals from top brands</div>
+      </div>
+      <div class="banner-label">Shop Fashion</div>
+    </div>
+  </div>
+ 
+  <!-- More Products -->
+  <h2 class="section-title">Recommended for You</h2>
+  <div class="products-grid" id="recommendedGrid"></div>
+ 
+</main>
+ 
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<div class="footer-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  Back to top ↑
+</div>
+<footer>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4>Get to Know Us</h4>
+      <a href="#">About Amazon</a>
+      <a href="#">Careers</a>
+      <a href="#">Press Releases</a>
+      <a href="#">Amazon Cares</a>
+      <a href="#">Gift a Smile</a>
+    </div>
+    <div class="footer-col">
+      <h4>Make Money with Us</h4>
+      <a href="#">Sell on Amazon</a>
+      <a href="#">Sell under Amazon Accelerator</a>
+      <a href="#">Amazon Associates</a>
+      <a href="#">Fulfilment by Amazon</a>
+    </div>
+    <div class="footer-col">
+      <h4>Amazon Payment Products</h4>
+      <a href="#">Amazon Pay</a>
+      <a href="#">Amazon Pay ICICI Credit Card</a>
+      <a href="#">Reload Your Balance</a>
+      <a href="#">Amazon Currency Converter</a>
+    </div>
+    <div class="footer-col">
+      <h4>Let Us Help You</h4>
+      <a href="#">COVID-19 and Amazon</a>
+      <a href="#">Your Account</a>
+      <a href="#">Returns Centre</a>
+      <a href="#">100% Purchase Protection</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p style="margin-bottom:8px;font-size:1.3rem;font-weight:700;color:#fff">amazon</p>
+    <p>© 2026 Amazon.in – BTech First Year Project Demo. All rights reserved.</p>
+  </div>
+</footer>
+ 
+<!-- ══ CART SIDEBAR ════════════════════════════════════ -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>🛒 Your Cart</h2>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-total" id="cartTotal"></div>
+  <button class="checkout-btn" onclick="showToast('Proceeding to Checkout...')">Proceed to Buy</button>
+</div>
+ 
+<!-- ══ TOAST ═══════════════════════════════════════════ -->
+<div class="toast" id="toast"></div>
+ 
+<script src="script.js"></script>
+</body>
+</html>
+ 
